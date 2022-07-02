@@ -7,7 +7,8 @@ use Illuminate\Http\Request;
 class ExecController extends Controller
 {
     public function cdpython(Request $request) {
-        return view('welcome');
+        $command = "cd /Users/akp_kick6/development/research/test && python cd_1.py";
+        exec($command, $output);
     }
 
 
