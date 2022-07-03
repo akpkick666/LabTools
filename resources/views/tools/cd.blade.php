@@ -5,7 +5,7 @@
         <title>KurodaLab</title>
     </head>
     <body>
-        <h1>Blog Name</h1>
+        <h1>Circular Dichroism</h1>
         <form action="/python" method="POST">
             @csrf
             <div class="title">

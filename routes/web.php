@@ -11,8 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', 'ExecController@index');
 
 Route::get('/python', 'ExecController@cdpython');
