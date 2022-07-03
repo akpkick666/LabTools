@@ -14,6 +14,9 @@
                 <p class='body'>This is a sample body.</p>
             </div>
         </div>
+        <a class="text-decoration-none" href='/cd'>
+            <button type="button" class="btn btn-outline-primary">CD</button>
+        </a>
     </body>
 </html>
 

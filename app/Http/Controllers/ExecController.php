@@ -10,6 +10,10 @@ class ExecController extends Controller
         return view('index');
     }
 
+    public function cd(){
+        return view('/tools/cd');
+    }
+
     public function cdpython(Request $request) {
         $command = "cd /Users/akp_kick6/development/research/test && python cd_1.py";
         exec($command, $output);
