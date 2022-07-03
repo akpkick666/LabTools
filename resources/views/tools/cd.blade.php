@@ -6,7 +6,7 @@
     </head>
     <body>
         <h1>Circular Dichroism</h1>
-        <form action="/python" method="POST">
+        <form action="/cdpython" method="POST">
             @csrf
             <div class="title">
                 <h2>sample</h2>
