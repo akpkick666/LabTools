@@ -26,6 +26,8 @@ class ExecController extends Controller
         $command = "cd /Users/akp_kick6/development/LabTools/app/Http/Python/CD && python cd_1.py";
         exec($command, $output);
 
+        Storage::deleteDirectory('cdfile');
+
     }
     
 
