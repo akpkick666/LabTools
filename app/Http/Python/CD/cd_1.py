@@ -1,11 +1,14 @@
 import pandas as pd
 import numpy as np
+
+#入力読み込み
+import sys
 #graph
 import matplotlib.pyplot as plt
 
 #DataFrame格納
-df_sample = pd.read_table("D3-His-25.txt", skiprows=19, skipfooter=0, engine='python', header=None)
-df_blank = pd.read_table("blank-25.txt", skiprows=19, skipfooter=0, engine='python', header=None)
+df_sample = pd.read_table("/Users/akp_kick6/development/LabTools/storage/app/sample.txt", skiprows=19, skipfooter=0, engine='python', header=None)
+df_blank = pd.read_table("/Users/akp_kick6/development/LabTools/storage/app/blank.txt", skiprows=19, skipfooter=0, engine='python', header=None)
 
 #偏光度抽出(Series,一次元配列,縦軸)
 df_sample_columns = df_sample[1]
