@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+#Facade
+use Illuminate\Support\Facades\Storage;
 
 class ExecController extends Controller
 {   
@@ -15,12 +17,20 @@ class ExecController extends Controller
     }
 
     public function cdpython(Request $request) {
-        $command = "cd /Users/akp_kick6/development/research/test && python cd_1.py";
+        $command = "cd /Users/akp_kick6/development/LabTools/app/Http/Python/CD && python cd_1.py";
         exec($command, $output);
+
     }
 
+    #test
+    public function cdpython2(Request $request) {
+        $sample = $request->file("sample");
+        $blank = $request->file("blank");
+        
+        Storage::putFileAs('cdfile', $sample, 'sample');
+        Storage::putFileAs('cdfile', $blank, 'blank');
 
-
+    }
     
 
 }
