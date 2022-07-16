@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 #Facade
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class ExecController extends Controller
 {   
@@ -21,9 +22,10 @@ class ExecController extends Controller
         $blank = $request->file("blank");
         
         #一意になるファイル名指定
-        $seed = 1234;
-        $sample_file = 'sample'.$seed;
-        $blank_file = 'blank'.$seed;
+        $seed1 = Str::random(4);
+        $seed2 = Str::random(4);
+        $sample_file = 'sample'.$seed1;
+        $blank_file = 'blank'.$seed2;
 
         Storage::putFileAs('cdfile', $sample, $sample_file);
         Storage::putFileAs('cdfile', $blank, $blank_file);
