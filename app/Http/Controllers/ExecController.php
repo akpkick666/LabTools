@@ -20,10 +20,15 @@ class ExecController extends Controller
         $sample = $request->file("sample");
         $blank = $request->file("blank");
         
-        Storage::putFileAs('cdfile', $sample, 'sample');
-        Storage::putFileAs('cdfile', $blank, 'blank');
+        #一意になるファイル名指定
+        $seed = 1234;
+        $sample_file = 'sample'.$seed;
+        $blank_file = 'blank'.$seed;
 
-        $command = "cd /Users/akp_kick6/development/LabTools/app/Http/Python/CD && python cd_1.py";
+        Storage::putFileAs('cdfile', $sample, $sample_file);
+        Storage::putFileAs('cdfile', $blank, $blank_file);
+
+        $command = "cd /Users/akp_kick6/development/LabTools/app/Http/Python/CD && python cd_1.py $sample_file $blank_file";
         exec($command, $output);
 
         Storage::deleteDirectory('cdfile');

@@ -24,3 +24,16 @@ df_blank = pd.read_table("file[blank]", skiprows=19, skipfooter=0, engine='pytho
 #DataFrame格納
 df_sample = pd.read_table("D3-His-25.txt", skiprows=19, skipfooter=0, engine='python', header=None)
 df_blank = pd.read_table("blank-25.txt", skiprows=19, skipfooter=0, engine='python', header=None)
+
+
+#python, plt.showの後
+token = np.random.random(1000)           #ランダムな数生成
+file_name = f"output_{token}.png"        #ランダムな名前＋.png?
+plt.savefig(file_name)                   #ランダムな名前のpngファイルを保存
+
+#cdfile削除
+Storage::deleteDirectory('cdfile');
+
+#argvを文字列に変換
+sample_argv = str(sys.argv[1])
+blank_argv = str(sys.argv[2])
