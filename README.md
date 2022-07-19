@@ -1,7 +1,9 @@
 # LabTools
 
 This is my undergraduate thesis.
+
 I'm in the process of creating a simplified LIMS(Laboratory information management system).
+
 [LIMS](https://en.wikipedia.org/wiki/Laboratory_information_management_system)
 
 # DEMO
