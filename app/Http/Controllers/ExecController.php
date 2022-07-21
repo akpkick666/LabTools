@@ -20,20 +20,19 @@ class ExecController extends Controller
     public function cdpython(Request $request) {
         $sample = $request->file("sample");
         $blank = $request->file("blank");
-        
-        #一意になるファイル名指定
-        $seed1 = Str::random(4);
-        $seed2 = Str::random(4);
-        $sample_file = 'sample'.$seed1;
-        $blank_file = 'blank'.$seed2;
 
-        Storage::putFileAs('cdfile', $sample, $sample_file);
-        Storage::putFileAs('cdfile', $blank, $blank_file);
+        #一意になるフォルダ名作成
+        $seed = Str::random(4);
+        $cd_dir = 'cdfile_'.$seed;
 
-        $command = "cd /Users/akp_kick6/development/LabTools/app/Http/Python/CD && python cd_1.py $sample_file $blank_file";
+        #生データをフォルダに一時保存
+        Storage::putFileAs($cd_dir, $sample, 'sample');
+        Storage::putFileAs($cd_dir, $blank, 'blank');
+
+        $command = "cd /Users/akp_kick6/development/LabTools/app/Http/Python/CD && python cd_1.py $cd_dir";
         exec($command, $output);
 
-        Storage::deleteDirectory('cdfile');
+        Storage::deleteDirectory($cd_dir);
 
     }
     

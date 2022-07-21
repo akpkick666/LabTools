@@ -9,11 +9,9 @@ import random
 import string
 
 
-
 #DataFrame格納
-#df_sample = pd.read_table("/Users/akp_kick6/development/LabTools/storage/app/cdfile/sample", skiprows=19, skipfooter=0, engine='python', header=None)
-df_sample = pd.read_table("/Users/akp_kick6/development/LabTools/storage/app/cdfile/" + sys.argv[1], skiprows=19, skipfooter=0, engine='python', header=None)
-df_blank = pd.read_table("/Users/akp_kick6/development/LabTools/storage/app/cdfile/" + sys.argv[2], skiprows=19, skipfooter=0, engine='python', header=None)
+df_sample = pd.read_table("/Users/akp_kick6/development/LabTools/storage/app/" + sys.argv[1] + "/sample", skiprows=19, skipfooter=0, engine='python', header=None)
+df_blank = pd.read_table("/Users/akp_kick6/development/LabTools/storage/app/" + sys.argv[1] + "/blank", skiprows=19, skipfooter=0, engine='python', header=None)
 
 #偏光度抽出(Series,一次元配列,縦軸)
 df_sample_columns = df_sample[1]
