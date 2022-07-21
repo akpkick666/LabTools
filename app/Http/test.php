@@ -56,3 +56,8 @@ Storage::putFileAs('cdfile', $blank, $blank_file);
 $command = "cd /Users/akp_kick6/development/LabTools/app/Http/Python/CD && python cd_1.py $sample_file $blank_file";
 exec($command, $output);
 
+#グラフファイル名作成,保存(python)
+dat = string.digits + string.ascii_lowercase + string.ascii_uppercase           # 英数字をすべて取得
+token = ''.join([random.choice(dat) for i in range(4)])                         # 英数字からランダムに4文字取得
+file_name = 'graph_' + token + '.png'
+

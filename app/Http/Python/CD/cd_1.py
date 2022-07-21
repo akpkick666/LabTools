@@ -34,9 +34,5 @@ plt.title("CD")
 plt.xlabel("wavelength")
 plt.ylabel("polarization")
 
-#グラフファイル名作成,保存
-dat = string.digits + string.ascii_lowercase + string.ascii_uppercase           # 英数字をすべて取得
-token = ''.join([random.choice(dat) for i in range(4)])                         # 英数字からランダムに4文字取得
-file_name = 'graph_' + token + '.png'
 
-plt.savefig('Graph/' + file_name)
+plt.savefig('Graph/' + sys.argv[2])
