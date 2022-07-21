@@ -35,4 +35,5 @@ plt.xlabel("wavelength")
 plt.ylabel("polarization")
 
 
-plt.savefig('Graph/' + sys.argv[2])
+#plt.savefig('Graph/' + sys.argv[2])
+plt.savefig('../../../../public/img/cd_graph/' + sys.argv[2])

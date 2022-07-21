@@ -39,12 +39,8 @@ class ExecController extends Controller
         Storage::deleteDirectory($cd_dir);
 
         
-        
-
-
-
         #グラフ表示ページに移動、ランダムに作成した画像名渡す
-        #return view('/tools/graph')->with(['graph_img' => $post->get()]);
+        return view('/tools/graph')->with(['graph_name' => $graph_name]);
 
     }
     
