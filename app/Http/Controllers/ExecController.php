@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 #Facade
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;   #保存
+use Illuminate\Support\Str;               #ランダム
 
 class ExecController extends Controller
 {   
