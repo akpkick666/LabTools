@@ -31,14 +31,13 @@ class ExecController extends Controller
 
         #csvファイル名作成
         $seed3 = Str::random(4);
-        $csv_sample = 'sample_'.$seed3.'.csv';
-        $csv_blank = 'blank_'.$seed3.'.csv';
-
+        $csv_file = 'data_'.$seed3.'.csv';
+        
         #生データをフォルダに一時保存
         Storage::putFileAs($cd_dir, $sample, 'sample');
         Storage::putFileAs($cd_dir, $blank, 'blank');
 
-        $command = "cd /Users/akp_kick6/development/LabTools/app/Http/Python/CD && python cd_1.py $cd_dir $graph_name $csv_sample $csv_blank";
+        $command = "cd /Users/akp_kick6/development/LabTools/app/Http/Python/CD && python cd_2.py $cd_dir $graph_name $csv_file";
         exec($command, $output);
 
         Storage::deleteDirectory($cd_dir);
