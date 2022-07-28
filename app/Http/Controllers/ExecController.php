@@ -18,8 +18,17 @@ class ExecController extends Controller
     }
 
     public function cdpython(Request $request) {
-        $sample = $request->file("sample");
-        $blank = $request->file("blank");
+        $input_file = $request['file'];
+        $sample = $input_file['sample'];
+        $blank = $input_file['blank'];
+
+        $input_axis = $request['axis'];
+        $x_max = $input_axis['x-max'];
+        $x_min = $input_axis['x-min'];
+        $y_max = $input_axis['y-max'];
+        $y_min = $input_axis['y-min'];
+        $x_space = $input_axis['x-space'];
+        $y_space = $input_axis['y-space'];
 
         #一意になるフォルダ名作成
         $seed = Str::random(4);
@@ -37,7 +46,8 @@ class ExecController extends Controller
         Storage::putFileAs($cd_dir, $sample, 'sample');
         Storage::putFileAs($cd_dir, $blank, 'blank');
 
-        $command = "cd /Users/akp_kick6/development/LabTools/app/Http/Python/CD && python cd_2.py $cd_dir $graph_name $csv_file";
+        $command = "cd /Users/akp_kick6/development/LabTools/app/Http/Python/CD && python cd_2.py $cd_dir $graph_name $csv_file $x_max $x_min $y_max $y_min $x_space $y_space";
+
         exec($command, $output);
 
         Storage::deleteDirectory($cd_dir);
