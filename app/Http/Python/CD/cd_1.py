@@ -4,6 +4,8 @@ import numpy as np
 import sys
 #graph
 import matplotlib.pyplot as plt
+#table画像保存
+import dataframe_image as dfi
 
 
 #DataFrame格納
@@ -18,13 +20,10 @@ df_sample_csv[1] = polarization
 df_sample_csv.to_csv("/Users/akp_kick6/development/LabTools/public/img/cd/" + sys.argv[8] + "/row_data.csv", header=None, index=None)
 
 ###メタデータ###
-#メタデータ用DateFrame作成
+#sampleメタデータ
 df_meta_sample = pd.read_table("/Users/akp_kick6/development/LabTools/storage/app/" + sys.argv[1] + "/sample", nrows=18, header=None)
-plt.savefig("/Users/akp_kick6/development/LabTools/public/img/cd/" + sys.argv[8] + "/sample_metadata.png")
-
-df_meta_blank = pd.read_table("/Users/akp_kick6/development/LabTools/storage/app/" + sys.argv[1] + "/blank", nrows=18, header=None)
-plt.savefig("/Users/akp_kick6/development/LabTools/public/img/cd/" + sys.argv[8] + "/blank_metadata.png")
-
+df_styled = df_meta_sample.style.background_gradient()
+dfi.export(df_styled.hide(axis='index').hide(axis='columns'), "/Users/akp_kick6/development/LabTools/public/img/cd/" + sys.argv[8] + "/sample_metadata.png")
 
 ###グラフ描画###
 #DataFrame格納
