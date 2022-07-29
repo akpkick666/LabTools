@@ -9,8 +9,8 @@
     <body>
         <h1>RESULT</h1>
         <div>
-            <h2 class='title'>{{ $graph_name }}</h2>
-            <img src="{{ asset('img/cd_graph/' . $graph_name . '.png')}}" alt="">
+            <h2 class='title'>フォルダ名:  . {{ $data_dir }}</h2>
+            <img src="{{ asset('img/cd/' . $data_dir . '/graph_data.png')}}" alt="">
         </div>
     </body>
 </html>

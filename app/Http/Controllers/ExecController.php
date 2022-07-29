@@ -34,6 +34,10 @@ class ExecController extends Controller
         $seed = Str::random(4);
         $cd_dir = 'cdfile_'.$seed;
 
+        #生データをフォルダに一時保存
+        Storage::putFileAs($cd_dir, $sample, 'sample');
+        Storage::putFileAs($cd_dir, $blank, 'blank');
+
         #グラフファイル名作成
         $seed2 = Str::random(4);
         $graph_name = 'graph_'.$seed2;
@@ -41,22 +45,25 @@ class ExecController extends Controller
         #csvファイル名作成
         $seed3 = Str::random(4);
         $csv_file = 'data_'.$seed3.'.csv';
-        
-        #生データをフォルダに一時保存
-        Storage::putFileAs($cd_dir, $sample, 'sample');
-        Storage::putFileAs($cd_dir, $blank, 'blank');
 
-        $command = "cd /Users/akp_kick6/development/LabTools/app/Http/Python/CD && python cd_2.py $cd_dir $graph_name $csv_file $x_max $x_min $y_max $y_min $x_space $y_space";
+        #グラフフォルダ名作成
+        $seed4 = Str::random(4);
+        $data_dir = 'data_'.$seed4;
+        #フォルダ作成実行
+        $command1 = "cd /Users/akp_kick6/development/LabTools/public/img/cd && mkdir $data_dir";
+        exec($command1, $output);
 
-        exec($command, $output);
+        #グラフ描画実行
+        $command2 = "cd /Users/akp_kick6/development/LabTools/app/Http/Python/CD && python cd_1.py $cd_dir $x_max $x_min $y_max $y_min $x_space $y_space $data_dir";
+        exec($command2, $output);
 
         Storage::deleteDirectory($cd_dir);
 
         
-        #グラフ表示ページに移動、ランダムに作成した画像名渡す
-        return view('/tools/graph')->with(['graph_name' => $graph_name]);
+        #グラフ表示ページに移動、ランダムに作成したディレクトリ名渡す
+        return view('/tools/graph')->with(['data_dir' => $data_dir]);
 
-    }
+    }   
     
 
 }
