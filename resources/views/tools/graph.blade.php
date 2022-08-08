@@ -13,7 +13,7 @@
         <div class="container">
             <h1>RESULT</h1>
             <div>
-                <h2 class='title'>フォルダ名:  . {{ $data_dir }}</h2>
+                <h2 class='title'>フォルダ名: {{ $data_dir }}</h2>
                 <img src="{{ asset('img/cd/' . $data_dir . '/graph_data.png')}}" alt="">
                 <img src="{{ asset('img/cd/' . $data_dir . '/sample_metadata.png')}}" alt="" class="w-25">
             </div>

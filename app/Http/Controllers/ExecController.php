@@ -20,6 +20,8 @@ class ExecController extends Controller
     public function cdpython(Request $request) {
         $input_file = $request['file'];
         $sample = $input_file['sample'];
+        $sample2 = $input_file['sample2'];
+        $sample3 = $input_file['sample3'];
         $blank = $input_file['blank'];
 
         $input_axis = $request['axis'];
@@ -36,6 +38,8 @@ class ExecController extends Controller
 
         #生データをフォルダに一時保存
         Storage::putFileAs($cd_dir, $sample, 'sample');
+        Storage::putFileAs($cd_dir, $sample2, 'sample2');
+        Storage::putFileAs($cd_dir, $sample3, 'sample3');
         Storage::putFileAs($cd_dir, $blank, 'blank');
 
         #グラフファイル名作成

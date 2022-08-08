@@ -10,12 +10,12 @@
             @csrf
             <div class="title">
                 <h2>sample</h2>
-                <!-- <input type="file" name="sample"/> -->
                 <input type="file" name="file[sample]"/>
+                <input type="file" name="file[sample2]"/>
+                <input type="file" name="file[sample3]"/>
             </div>
             <div class="title">
                 <h2>blank</h2>
-                <!-- <input type="file" name="blank"/> -->
                 <input type="file" name="file[blank]"/>
             </div>
             <div class="title">
