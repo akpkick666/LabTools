@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\CdRequest;
 #Facade
 use Illuminate\Support\Facades\Storage;   #保存
 use Illuminate\Support\Str;               #ランダム
@@ -17,12 +17,12 @@ class ExecController extends Controller
         return view('/tools/cd');
     }
 
-    public function cdpython(Request $request) {
+    public function cdpython(CdRequest $request) {
         $input_file = $request['file'];
         $sample = $input_file['sample'];
+        $blank = $input_file['blank'];
         $sample2 = $input_file['sample2'];
         $sample3 = $input_file['sample3'];
-        $blank = $input_file['blank'];
 
         $input_axis = $request['axis'];
         $x_max = $input_axis['x-max'];

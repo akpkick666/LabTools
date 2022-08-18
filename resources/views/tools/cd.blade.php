@@ -11,12 +11,14 @@
             <div class="title">
                 <h2>sample</h2>
                 <input type="file" name="file[sample]"/>
+                <p class="title__error" style="color:red">{{ $errors->first('file.sample') }}</p>
                 <input type="file" name="file[sample2]"/>
                 <input type="file" name="file[sample3]"/>
             </div>
             <div class="title">
                 <h2>blank</h2>
                 <input type="file" name="file[blank]"/>
+                <p class="title__error" style="color:red">{{ $errors->first('file.blank') }}</p>
             </div>
             <div class="title">
                 <h2>X-axis</h2>
