@@ -49,20 +49,21 @@ pola = df_data[1]
 #波長(横軸,200-260)
 wavelength = df_data[0]
 #グラフ作成
-plt.plot(wavelength, pola)
-plt.plot(df_data2[0], df_data2[1])
-plt.plot(df_data3[0], df_data3[1])
+plt.plot(wavelength, pola, label="sample1")
+plt.plot(df_data2[0], df_data2[1], label="sample2")
+plt.plot(df_data3[0], df_data3[1], label="sample3")
 #最大値,最小値
 plt.xlim(float(sys.argv[3]), float(sys.argv[2]))
 plt.ylim(float(sys.argv[5]), float(sys.argv[4]))
 #目盛り間隔
-plt.xticks( np.arange(float(sys.argv[3]), float(sys.argv[2])+1, step=float(sys.argv[6])))
-plt.yticks( np.arange(float(sys.argv[5]), float(sys.argv[4])+1, step=float(sys.argv[7])))
+plt.xticks(np.arange(float(sys.argv[3]), float(sys.argv[2])+1, step=float(sys.argv[6])))
+plt.yticks(np.arange(float(sys.argv[5]), float(sys.argv[4])+1, step=float(sys.argv[7])))
 #目盛り線
 plt.grid()
 #軸ラベル
 plt.title("CD")
 plt.xlabel("Wavelength[nm]")
 plt.ylabel("CD[mdeg]")
+plt.legend()
 #グラフ画像保存
 plt.savefig("/Users/akp_kick6/development/LabTools/public/img/cd/" + sys.argv[8] + "/graph_data.png")
