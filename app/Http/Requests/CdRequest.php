@@ -9,10 +9,10 @@ class CdRequest extends FormRequest
     public function rules()
     {
         return [
-            'file.sample' => 'required|mimes:txt,csv',
-            'file.sample2' => 'nullable|mimes:txt,csv',
-            'file.sample3' => 'nullable|mimes:txt,csv',
-            'file.blank' => 'required|mimes:txt,csv',
+            'sample.sample1' => 'required|mimes:txt,csv',
+            'sample.sample2' => 'nullable|mimes:txt,csv',
+            'sample.sample3' => 'nullable|mimes:txt,csv',
+            'blank.blank' => 'required|mimes:txt,csv',
         ];
     }
 }

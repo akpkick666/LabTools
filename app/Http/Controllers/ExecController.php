@@ -18,11 +18,15 @@ class ExecController extends Controller
     }
 
     public function cdpython(CdRequest $request) {
-        $input_file = $request['file'];
-        $sample = $input_file['sample'];
-        $blank = $input_file['blank'];
-        $sample2 = $input_file['sample2'];
-        $sample3 = $input_file['sample3'];
+        // sampleの連想配列
+        $sample_asfiles = $request['sample'];
+        # $sample = $input_file['sample'];
+        $input_blank = $request['blank'];
+        // blankファイル
+        $blank = $input_blank['blank'];
+        # $sample2 = $input_file['sample2'];
+        # $sample3 = $input_file['sample3'];
+        ##### sampleを全てリストに格納 #####
 
         $input_axis = $request['axis'];
         $x_max = $input_axis['x-max'];
@@ -37,9 +41,13 @@ class ExecController extends Controller
         $cd_dir = 'cdfile_'.$seed;
 
         #生データをフォルダに一時保存
-        Storage::putFileAs($cd_dir, $sample, 'sample');
-        Storage::putFileAs($cd_dir, $sample2, 'sample2');
-        Storage::putFileAs($cd_dir, $sample3, 'sample3');
+        ##### sampleはリストからforeach文で一個ずつ取り出していく #####
+        foreach ($sample_asfiles as $key => $value){
+            Storage::putFileAs($cd_dir, $value, $key);
+        }
+        # Storage::putFileAs($cd_dir, $sample, 'sample');
+        # Storage::putFileAs($cd_dir, $sample2, 'sample2');
+        # Storage::putFileAs($cd_dir, $sample3, 'sample3');
         Storage::putFileAs($cd_dir, $blank, 'blank');
 
         #グラフファイル名作成
@@ -50,7 +58,7 @@ class ExecController extends Controller
         $seed3 = Str::random(4);
         $csv_file = 'data_'.$seed3.'.csv';
 
-        #グラフフォルダ名作成
+        #グラフ全データ格納フォルダ名作成
         $seed4 = Str::random(4);
         $data_dir = 'data_'.$seed4;
         #フォルダ作成実行

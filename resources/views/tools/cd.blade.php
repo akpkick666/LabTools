@@ -10,15 +10,15 @@
             @csrf
             <div class="title">
                 <h2>sample</h2>
-                <input type="file" name="file[sample]"/>
-                <p class="title__error" style="color:red">{{ $errors->first('file.sample') }}</p>
-                <input type="file" name="file[sample2]"/>
-                <input type="file" name="file[sample3]"/>
+                <input type="file" name="sample[sample1]"/>
+                <p class="title__error" style="color:red">{{ $errors->first('sample.sample1') }}</p>
+                <input type="file" name="sample[sample2]"/>
+                <input type="file" name="sample[sample3]"/>
             </div>
             <div class="title">
                 <h2>blank</h2>
-                <input type="file" name="file[blank]"/>
-                <p class="title__error" style="color:red">{{ $errors->first('file.blank') }}</p>
+                <input type="file" name="blank[blank]"/>
+                <p class="title__error" style="color:red">{{ $errors->first('blank.blank') }}</p>
             </div>
             <div class="title">
                 <h2>X-axis</h2>
