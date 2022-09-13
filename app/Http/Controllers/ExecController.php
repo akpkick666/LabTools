@@ -18,16 +18,16 @@ class ExecController extends Controller
     }
 
     public function cdpython(CdRequest $request) {
-        // sampleの連想配列
+        # sampleの連想配列
         $sample_asfiles = $request['sample'];
         # $sample = $input_file['sample'];
         $input_blank = $request['blank'];
-        // blankファイル
+        # blankファイル
         $blank = $input_blank['blank'];
-        # $sample2 = $input_file['sample2'];
-        # $sample3 = $input_file['sample3'];
-        ##### sampleを全てリストに格納 #####
-
+        #sample名定義
+        $sample_names = array_keys($sample_asfiles); # sampleの名前リスト
+        $names = implode(' ', $sample_names); # sample名の連結文字列
+        
         $input_axis = $request['axis'];
         $x_max = $input_axis['x-max'];
         $x_min = $input_axis['x-min'];
@@ -45,9 +45,6 @@ class ExecController extends Controller
         foreach ($sample_asfiles as $key => $value){
             Storage::putFileAs($cd_dir, $value, $key);
         }
-        # Storage::putFileAs($cd_dir, $sample, 'sample');
-        # Storage::putFileAs($cd_dir, $sample2, 'sample2');
-        # Storage::putFileAs($cd_dir, $sample3, 'sample3');
         Storage::putFileAs($cd_dir, $blank, 'blank');
 
         #グラフファイル名作成
@@ -66,7 +63,7 @@ class ExecController extends Controller
         exec($command1, $output);
 
         #グラフ描画実行
-        $command2 = "cd /Users/akp_kick6/development/LabTools/app/Http/Python/CD && python cd_1.py $cd_dir $x_max $x_min $y_max $y_min $x_space $y_space $data_dir";
+        $command2 = "cd /Users/akp_kick6/development/LabTools/app/Http/Python/CD && python cd_1.py --cd_dir $cd_dir --x_max $x_max --x_min $x_min --y_max $y_max --y_min $y_min --x_space $x_space --y_space $y_space --data_dir $data_dir --samples $names";
         exec($command2, $output);
 
         Storage::deleteDirectory($cd_dir);
